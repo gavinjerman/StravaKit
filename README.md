@@ -19,7 +19,7 @@ Open Sourced Strava iOS wrapper for Strava API v3.
    <array>
       <string>strava</string>
    </array>```  
-2. add CFBundleURLTypes
+3. add CFBundleURLTypes
 ```
 <key>CFBundleURLTypes</key>
 	<array>
@@ -40,14 +40,14 @@ Open Sourced Strava iOS wrapper for Strava API v3.
 3. Include StravaKit in Your Target
 Go to your app target -> Build Phases -> **Link Binary With Libraries ** and ensure “StravaKit” is included.
 
-#How to use this?
+# How to use this?
 ## Object creation
 ```
         let config = StravaConfig(
             clientId: "",
             clientSecret: "",
             redirectUri: "APPNAME://<Authorization callback domain just like in strava dev portal>",
-            scopes: "read,activity:write,activity:read_all"
+            scopes: "read,activity:write,activity:read_all" // add permissions you want to request the user
         )
         let tokenStorage = KeychainTokenStorage()
         let authManager = StravaAuthManager(config: config, tokenStorage: tokenStorage)
@@ -79,7 +79,7 @@ Go to your app target -> Build Phases -> **Link Binary With Libraries ** and ens
     }
 ```
 
-## GET activities
+## GET Activities
 ```
     @MainActor
     func loadActivities() async {
