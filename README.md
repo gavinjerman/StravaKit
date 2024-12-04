@@ -1,6 +1,8 @@
 # StravaKit
 
-Strava iOS wrapper for Strava API v3.
+Strava Swift package for Strava API v3.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ferrufino)
 
 ## Setup
 
