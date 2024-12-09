@@ -8,7 +8,8 @@
 import Foundation
 
 /// Represents a detailed or summary activity in Strava.
-public struct Activity: Codable, Identifiable {
+public struct Activity: Codable, Identifiable, Hashable {
+    
     public let id: Int
     public let name: String?
     public let description: String?
@@ -63,6 +64,35 @@ public struct Activity: Codable, Identifiable {
         case hasKudoed = "has_kudoed"
         case averageHeartrate = "average_heartrate"
         case maxHeartrate = "max_heartrate"
+    }
+    
+    public static func == (lhs: Activity, rhs: Activity) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension Activity {
+    public var formattedDistance: String {
+        let distanceInKm = (distance ?? 0) / 1000
+        return String(format: "%.2f km", distanceInKm)
+    }
+
+    public var formattedElevation: String {
+        let elevation = totalElevationGain ?? 0
+        return String(format: "%.0f m", elevation)
+    }
+
+    public var typeIconName: String {
+        switch type?.lowercased() {
+        case "ride": return "figure.outdoor.cycle"
+        case "run": return "figure.run"
+        case "trail": return "figure.hiking"
+        default: return "figure.wave"
+        }
     }
 }
 

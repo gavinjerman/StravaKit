@@ -1,13 +1,24 @@
 //
 //  StravaRepository.swift
-//  
+// Fetch/Save/Update and delete
 //
 //  Created by Gustavo Ferrufino on 2024-11-30.
 //
 
 import Foundation
 
-/// Manages data logic for Strava, including authentication and fetching data
+/// Custom error for StravaRepository
+enum StravaRepositoryError: Error, LocalizedError {
+    case noToken
+
+    var errorDescription: String? {
+        switch self {
+        case .noToken:
+            return "No valid token found."
+        }
+    }
+}
+
 public final class StravaRepository {
     private let authManager: StravaAuthManager
     private let webClient: StravaWebClient
@@ -17,40 +28,35 @@ public final class StravaRepository {
         self.webClient = webClient ?? StravaWebClient.shared
     }
 
-    /// Fetches all activities for the current athlete
-    public func fetchAllActivities(page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
-        guard let token = authManager.tokenStorage.getToken() else {
-            throw NSError(domain: "StravaRepository", code: -1, userInfo: [NSLocalizedDescriptionKey: "No valid token found."])
-        }
+    // MARK: - Public Methods
 
-        // Refresh token if expired
-        let validToken = try await authManager.refreshTokenIfNeeded(currentToken: token)
-        if validToken.accessToken != token.accessToken {
-            authManager.tokenStorage.save(token: validToken)
+    public func fetchAllActivities(page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
+        return try await webClient.performRequest(
+            with: StravaRouter.getActivities(page: page, perPage: perPage).asURLRequest(),
+            token: authManager.getValidToken(),
+            responseType: [Activity].self
+        )
+    }
+
+    public func fetchSavedRoutes(page: Int = 1, perPage: Int = 30) async throws -> [Route] {
+        return try await webClient.performRequest(
+            with: StravaRouter.getSavedRoutes(page: page, perPage: perPage).asURLRequest(),
+            token: authManager.getValidToken(),
+            responseType: [Route].self
+        )
+    }
+
+    public func logout() async throws {
+        try await authManager.deauthorize()
+    }
+
+    // MARK: - Private Methods
+
+    /// Refresh token if needed
+    private func refreshTokenIfNeeded() async throws -> OAuthToken {
+        guard let currentToken = authManager.tokenStorage.getToken() else {
+            throw StravaRepositoryError.noToken
         }
-        // Need to unwrap the accessToken to ensure correct string interpolation
-        guard let accessToken = validToken.accessToken, !accessToken.isEmpty else {
-            throw NSError(domain: "StravaRepository", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid access token."])
-        }
-        
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.httpAdditionalHeaders = ["Authorization": "Bearer \(accessToken)"]
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-        do {
-            let (data, response) = try await session.data(for: StravaRouter.getActivities(page: 1, perPage: 30).asURLRequest())
-            
-            // Validate response
-            if let httpResponse = response as? HTTPURLResponse {
-                print("HTTP Status Code: \(httpResponse.statusCode)")
-            }
-            
-            // Decode response data
-            let activities = try JSONDecoder().decode([Activity].self, from: data)
-            return activities
-        } catch {
-            print("DEBUG:: Failed to load activities: \(error)")
-            throw error
-        }
+        return try await authManager.refreshTokenIfNeeded(currentToken: currentToken)
     }
 }

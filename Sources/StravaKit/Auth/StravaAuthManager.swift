@@ -8,6 +8,24 @@
 import Foundation
 import AuthenticationServices
 
+/// Custom error for StravaRepository
+enum StravaAuthError: Error, LocalizedError {
+    case noToken
+    case invalidAccessToken
+    case networkError(String)
+
+    var errorDescription: String? {
+        switch self {
+        case .noToken:
+            return "No valid token found."
+        case .invalidAccessToken:
+            return "Invalid access token."
+        case .networkError(let message):
+            return "Network error: \(message)"
+        }
+    }
+}
+
 public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthenticationPresentationContextProviding {
     private let config: StravaConfig
     public let tokenStorage: TokenStorage
@@ -54,6 +72,17 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
             return
         }
     }
+    
+    /// Returns a valid token, refreshing it if necessary
+    public func getValidToken() async throws -> OAuthToken {
+        guard let currentToken = tokenStorage.getToken() else {
+            throw StravaAuthError.noToken
+        }
+        if currentToken.isExpired {
+            return try await refreshTokenIfNeeded(currentToken: currentToken)
+        }
+        return currentToken
+    }
 
     public func refreshTokenIfNeeded(currentToken: OAuthToken) async throws -> OAuthToken {
         guard currentToken.isExpired else { return currentToken }
@@ -74,7 +103,16 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
         let decoder = JSONDecoder()
         let validToken = try decoder.decode(OAuthToken.self, from: data)
         
+        // Save new token
+        tokenStorage.save(token: validToken)
+        
+        // Return validToken
         return validToken
+    }
+    
+    public func authenticated() async -> Bool {
+        let token = try? await getValidToken()
+        return ((token?.isExpired) != nil)
     }
     
     private func buildAppAuthURL() -> URL? {
@@ -112,6 +150,10 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
         }
 
         let token = try await exchangeCodeForToken(code: code)
+        
+        // Save new token
+        tokenStorage.save(token: token)
+        
         return token
     }
 
@@ -168,13 +210,7 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
             throw NSError(domain: "StravaAuthManager", code: (response as? HTTPURLResponse)?.statusCode ?? -1, userInfo: [NSLocalizedDescriptionKey: "Failed to deauthorize the access token."])
         }
 
-        // Decode the response (optional, if needed for logging)
-        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-            print("DEBUG:: Deauthorize Response: \(json)")
-        }
-
         // Clear the token
         tokenStorage.deleteToken()
-        print("DEBUG:: Successfully deauthorized the access token.")
     }
 }
