@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a map of a ride or route.
-public struct Map: Codable {
+public struct Map: Codable, Hashable {
     /// The ID of the map.
     public let id: String?
     /// The resource state indicating the level of detail in the map representation.

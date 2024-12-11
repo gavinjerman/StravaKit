@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 /// Represents a detailed or summary activity in Strava.
 public struct Activity: Codable, Identifiable, Hashable {
@@ -78,7 +79,7 @@ public struct Activity: Codable, Identifiable, Hashable {
 extension Activity {
     public var formattedDistance: String {
         let distanceInKm = (distance ?? 0) / 1000
-        return String(format: "%.2f km", distanceInKm)
+        return String(format: "%.0f km", distanceInKm)
     }
 
     public var formattedElevation: String {
@@ -101,4 +102,46 @@ extension Activity {
  */
 public final class MetaActivity: Codable {
     public let id: Int?
+}
+
+extension Activity: StravaItem {
+    
+    // Activity only fills summaryPolyline
+    public func decodePolyline() -> [CLLocationCoordinate2D]? {
+        guard let polyline = map?.summaryPolyline else { return nil }
+        var coordinates: [CLLocationCoordinate2D] = []
+        var index = polyline.startIndex
+        let end = polyline.endIndex
+        var lat = 0
+        var lng = 0
+
+        while index < end {
+            var byte = 0
+            var shift = 0
+            var result = 0
+            repeat {
+                byte = Int(polyline[index].asciiValue! - 63)
+                index = polyline.index(after: index)
+                result |= (byte & 0x1F) << shift
+                shift += 5
+            } while byte >= 0x20
+            let deltaLat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1))
+            lat += deltaLat
+
+            shift = 0
+            result = 0
+            repeat {
+                byte = Int(polyline[index].asciiValue! - 63)
+                index = polyline.index(after: index)
+                result |= (byte & 0x1F) << shift
+                shift += 5
+            } while byte >= 0x20
+            let deltaLng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1))
+            lng += deltaLng
+
+            coordinates.append(CLLocationCoordinate2D(latitude: Double(lat) / 1E5, longitude: Double(lng) / 1E5))
+        }
+
+        return coordinates
+    }
 }
