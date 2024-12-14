@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct StravaKitDemoApp: App {
+    private let container: DIContainer
+    
+    init() {
+        self.container = DIContainer()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(container: container)
         }
     }
 }

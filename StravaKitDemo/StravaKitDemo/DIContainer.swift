@@ -9,9 +9,7 @@ import Foundation
 import StravaKit
 
 final class DIContainer {
-    let stravaRepository: StravaRepository
     let stravaService: StravaService
-    let stravaAuthManager: StravaAuthManager
     
     init() {
         // Initialize dependencies here
@@ -19,14 +17,12 @@ final class DIContainer {
             clientId: "",
             clientSecret: "",
             redirectUri: "",
-            scopes: ""
+            scopes: "read,activity:write,activity:read_all"
         )
         let tokenStorage = KeychainTokenStorage()
         let authManager = StravaAuthManager(config: config, tokenStorage: tokenStorage)
-        let repository = StravaRepository(authManager: authManager)
-        
-        self.stravaAuthManager = authManager
-        self.stravaRepository = repository
-        self.stravaService = StravaService(repository: repository)
+        let repository = StravaRepository()
+
+        self.stravaService = StravaService(repository: repository, authManager: authManager)
     }
 }
