@@ -9,7 +9,7 @@ import Foundation
 import Security
 
 public final class KeychainTokenStorage: TokenStorage {
-    private let keychainKey = "com.strava.oauthToken"
+    private let keychainKey = "com.strava.token"
 
     public init() {}
 

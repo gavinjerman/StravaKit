@@ -22,17 +22,13 @@ public final class StravaService {
 
     /// Fetch all activities
     public func fetchActivities(page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
-        print("DEBUG:: StravaService fetching activities")
         let token = try await authManager.getValidToken()
-        print("DEBUG:: StravaService token retrieved, isExpired? \(token.isExpired), Token \(token)")
         return try await repository.fetchAllActivities(token: token, page: page, perPage: perPage)
     }
 
     /// Fetch all saved routes
     public func fetchSavedRoutes(page: Int = 1, perPage: Int = 30) async throws -> [Route] {
-        print("DEBUG:: StravaService fetching activities")
         let token = try await authManager.getValidToken()
-        print("DEBUG:: StravaService token retrieved, isExpired? \(token.isExpired), Token \(token)")
         return try await repository.fetchSavedRoutes(token: token, page: page, perPage: perPage)
     }
     

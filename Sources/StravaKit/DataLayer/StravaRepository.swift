@@ -29,7 +29,6 @@ public final class StravaRepository {
     // MARK: - Public Methods
 
     public func fetchAllActivities(token: OAuthToken, page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
-        print("DEBUG:: StravaRepository fetchAllActivities, token: \(token)")
         return try await webClient.performRequest(
             with: StravaRouter.getActivities(page: page, perPage: perPage).asURLRequest(),
             token: token,
@@ -38,8 +37,6 @@ public final class StravaRepository {
     }
 
     public func fetchSavedRoutes(token: OAuthToken, page: Int = 1, perPage: Int = 30) async throws -> [Route] {
-        print("DEBUG:: StravaRepository fetchSavedRoutes, token: \(token)")
-
         return try await webClient.performRequest(
             with: StravaRouter.getSavedRoutes(page: page, perPage: perPage).asURLRequest(),
             token: token,
