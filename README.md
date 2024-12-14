@@ -16,11 +16,12 @@ Strava Swift package for Strava API v3.
 2. **Update Info.plist**  
    Add the following keys to your `Info.plist`:
 
-   ```xml
-   <key>LSApplicationQueriesSchemes</key>
-   <array>
-      <string>strava</string>
-   </array>```  
+```
+<key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>strava</string>
+    </array>
+```  
 3. add CFBundleURLTypes
 ```
 <key>CFBundleURLTypes</key>

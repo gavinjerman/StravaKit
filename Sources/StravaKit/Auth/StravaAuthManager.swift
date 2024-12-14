@@ -41,7 +41,7 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
         if let appAuthURL = buildAppAuthURL(), UIApplication.shared.canOpenURL(appAuthURL) {
             await UIApplication.shared.open(appAuthURL)
             return
-            // Strava app redirects back with the authorization code; handle it in SceneDelegate/AppDelegate
+            // Strava app redirects back with the authorization code; If using UIKit handle it in SceneDelegate/AppDelegate
             // In SwitUI rely on "onOpenURL"
         } else {
             let authURL = buildWebAuthURL()

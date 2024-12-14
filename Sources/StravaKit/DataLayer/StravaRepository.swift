@@ -20,43 +20,27 @@ enum StravaRepositoryError: Error, LocalizedError {
 }
 
 public final class StravaRepository {
-    private let authManager: StravaAuthManager
     private let webClient: StravaWebClient
 
-    public init(authManager: StravaAuthManager, webClient: StravaWebClient? = nil) {
-        self.authManager = authManager
+    public init(webClient: StravaWebClient? = nil) {
         self.webClient = webClient ?? StravaWebClient.shared
     }
 
     // MARK: - Public Methods
 
-    public func fetchAllActivities(page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
+    public func fetchAllActivities(token: OAuthToken, page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
         return try await webClient.performRequest(
             with: StravaRouter.getActivities(page: page, perPage: perPage).asURLRequest(),
-            token: authManager.getValidToken(),
+            token: token,
             responseType: [Activity].self
         )
     }
 
-    public func fetchSavedRoutes(page: Int = 1, perPage: Int = 30) async throws -> [Route] {
+    public func fetchSavedRoutes(token: OAuthToken, page: Int = 1, perPage: Int = 30) async throws -> [Route] {
         return try await webClient.performRequest(
             with: StravaRouter.getSavedRoutes(page: page, perPage: perPage).asURLRequest(),
-            token: authManager.getValidToken(),
+            token: token,
             responseType: [Route].self
         )
-    }
-
-    public func logout() async throws {
-        try await authManager.deauthorize()
-    }
-
-    // MARK: - Private Methods
-
-    /// Refresh token if needed
-    private func refreshTokenIfNeeded() async throws -> OAuthToken {
-        guard let currentToken = authManager.tokenStorage.getToken() else {
-            throw StravaRepositoryError.noToken
-        }
-        return try await authManager.refreshTokenIfNeeded(currentToken: currentToken)
     }
 }
