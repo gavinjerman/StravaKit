@@ -186,6 +186,9 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
     }
     
     public func deauthorize() async throws {
+        // Clear the token
+        tokenStorage.deleteToken()
+        
         guard  let oAuthToken = tokenStorage.getToken(), !oAuthToken.isExpired else {
             print("Token already expired")
             return
@@ -200,7 +203,10 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONSerialization.data(withJSONObject: ["access_token": oAuthToken.accessToken])
+        guard let accessToken = oAuthToken.accessToken else {
+            throw StravaAuthError.invalidAccessToken
+        }
+        request.httpBody = try? JSONSerialization.data(withJSONObject: ["access_token": accessToken])
 
         // Perform the network request
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -209,8 +215,5 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
         guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
             throw NSError(domain: "StravaAuthManager", code: (response as? HTTPURLResponse)?.statusCode ?? -1, userInfo: [NSLocalizedDescriptionKey: "Failed to deauthorize the access token."])
         }
-
-        // Clear the token
-        tokenStorage.deleteToken()
     }
 }
