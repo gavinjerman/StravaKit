@@ -14,8 +14,7 @@ let package = Package(
     targets: [
         .target(
             name: "StravaKit",
-            path: "Sources/StravaKit",
-            exclude: ["StravaKitDemo/"]),
+            path: "Sources/StravaKit"),
         .testTarget(
             name: "StravaKitTests",
             dependencies: ["StravaKit"],
