@@ -9,7 +9,7 @@ import Foundation
 import Security
 
 public final class KeychainTokenStorage: TokenStorage {
-    private let keychainKey = "com.strava.token"
+    private let keychainKey = "com.strava.oauthToken"
 
     public init() {}
 
@@ -20,7 +20,7 @@ public final class KeychainTokenStorage: TokenStorage {
             kSecAttrAccount as String: keychainKey,
             kSecValueData as String: data
         ]
-        SecItemDelete(query as CFDictionary)
+        SecItemDelete(query as CFDictionary) // Ensure no duplicate items
         SecItemAdd(query as CFDictionary, nil)
     }
 
@@ -43,6 +43,13 @@ public final class KeychainTokenStorage: TokenStorage {
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: keychainKey
         ]
-        SecItemDelete(query as CFDictionary)
+        let status = SecItemDelete(query as CFDictionary)
+        if status == errSecSuccess {
+            print("Token successfully deleted.")
+        } else if status == errSecItemNotFound {
+            print("Token not found.")
+        } else {
+            print("Failed to delete token with status: \(status).")
+        }
     }
 }

@@ -14,9 +14,9 @@ final class DIContainer {
     init() {
         // Initialize dependencies here
         let config = StravaConfig(
-            clientId: "",
-            clientSecret: "",
-            redirectUri: "",
+            clientId: "122144",
+            clientSecret: "900e99a9a6a4d7ca494729af491f0ad9225f147c",
+            redirectUri: "trailcast://outdoorsy.cc",
             scopes: "read,activity:write,activity:read_all"
         )
         let tokenStorage = KeychainTokenStorage()
