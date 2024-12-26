@@ -45,6 +45,9 @@ Go to your app target -> Build Phases -> **Link Binary With Libraries ** and ens
 
 # How to use this?
 ## Object creation
+Sample Demo: https://github.com/ferrufino/StravaKitDemo
+
+You could possibly create a DIContainer and in it define the object as follows: 
 ```
         let config = StravaConfig(
             clientId: "",
@@ -57,6 +60,7 @@ Go to your app target -> Build Phases -> **Link Binary With Libraries ** and ens
         let repository = StravaRepository(authManager: authManager, webClient: StravaWebClient.shared)
 ```
 ## Authentication
+The Service has access to AuthManager, where the key methods are:
 ```   
     private func authenticateUser() async {
         do {
@@ -81,20 +85,36 @@ Go to your app target -> Build Phases -> **Link Binary With Libraries ** and ens
         }
     }
 ```
-
-## GET Activities
+StravaService:
 ```
-    @MainActor
-    func loadActivities() async {
-        print("DEBUG:: loadActivities() called") // Debug to check if the function is triggered
-        do {
-            let activities = try await repository.fetchAllActivities()
-            
-            print("DEBUG:: Activities fetched: \(activities)") // Check if activities are fetched
-            self.activities = activities
-        } catch {
-            print("DEBUG:: Failed to load activities: \(error.localizedDescription)") // Debug error
-            self.errorMessage = error.localizedDescription
-        }
+    public func login() async {
+        try? await authManager.authorize()
+    }
+    
+    public func logout() async {
+        try? await authManager.deauthorize()
+    }
+    
+    public func handleAuthResponse(url: URL) async throws -> OAuthToken {
+        return try await authManager.handleAuthResponse(url: url)
+    }
+    
+    public func isAuthenticated() async -> Bool {
+        return await authManager.authenticated()
+    }
+```
+## GET Activities or Routes
+Extract from StravaService:
+```
+    /// Fetch all activities
+    public func fetchActivities(page: Int = 1, perPage: Int = 30) async throws -> [Activity] {
+        let token = try await authManager.getValidToken()
+        return try await repository.fetchAllActivities(token: token, page: page, perPage: perPage)
+    }
+
+    /// Fetch all saved routes
+    public func fetchSavedRoutes(page: Int = 1, perPage: Int = 30) async throws -> [Route] {
+        let token = try await authManager.getValidToken()
+        return try await repository.fetchSavedRoutes(token: token, page: page, perPage: perPage)
     }
 ```
