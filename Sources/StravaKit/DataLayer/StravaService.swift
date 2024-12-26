@@ -30,12 +30,14 @@ public final class StravaService {
         let token = try await authManager.getValidToken()
         return try await repository.fetchSavedRoutes(token: token, page: page, perPage: perPage)
     }
-    
-    public func fetchActivityStream(activityId: String, token: OAuthToken, types: [String]) async throws -> ActivityStreamResponse {
+    /// Fetch an activity stream
+    public func fetchActivityStream(activityId: String, types: [String]) async throws -> ActivityStreamResponse {
+        let token = try await authManager.getValidToken()
         return try await repository.fetchActivityStream(activityId: activityId, token: token, types: types)
     }
-    
-    public func fetchRouteStream(routeId: String, token: OAuthToken) async throws -> RouteStreamResponse {
+    /// Fetch a route stream
+    public func fetchRouteStream(routeId: String) async throws -> RouteStreamResponse {
+        let token = try await authManager.getValidToken()
         return try await repository.fetchRouteStream(routeId: routeId, token: token)
     }
     

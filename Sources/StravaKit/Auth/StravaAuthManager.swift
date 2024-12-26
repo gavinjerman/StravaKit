@@ -175,10 +175,10 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
         guard let accessToken = oAuthToken.accessToken else {
             throw StravaAuthError.invalidAccessToken
         }
-        var request = StravaRouter.deauthorize(accessToken: accessToken).asURLRequest()
+        let request = StravaRouter.deauthorize(accessToken: accessToken).asURLRequest()
 
         // Perform the network request
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await URLSession.shared.data(for: request)
 
         // Check response status
         guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
