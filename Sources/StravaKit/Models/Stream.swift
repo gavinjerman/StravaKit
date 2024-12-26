@@ -1,32 +1,46 @@
 //
-//  Stream.swift
+//  Stream 2.swift
+//  StravaKit
 //
+//  Created by Gustavo Ferrufino on 2024-12-25.
 //
-//  Created by Gustavo Ferrufino on 2024-11-28.
-//
+
 
 import Foundation
 
-/// Represents the raw data (streams) associated with an activity or segment effort in Strava.
-/// All streams for a given activity or segment effort will be the same length, and the values at a given index correspond to the same time.
-public struct Stream: Codable {
-    /// Type of the stream (e.g., time, distance, altitude).
-    public let type: StreamType?
-    /// The raw data of the stream.
-    public let data: [Double]?
-    /// The series type of the stream (e.g., distance, time).
-    public let seriesType: String?
-    /// The original size of the stream data.
-    public let originalSize: Int?
-    /// The resolution of the stream (e.g., low, medium, high).
-    public let resolution: ResolutionType?
+// Base Stream Model
+public struct Stream<T: Codable>: Codable {
+    let type: String
+    let data: [T]
+    let originalSize: Int
+    let resolution: String
+    let seriesType: String
+}
 
-    /// Coding keys to map properties to JSON keys.
-    private enum CodingKeys: String, CodingKey {
-        case type
-        case data
-        case seriesType = "series_type"
-        case originalSize = "original_size"
-        case resolution
-    }
+// Specific Stream Types
+typealias TimeStream = Stream<Int>
+typealias DistanceStream = Stream<Double>
+typealias LatLngStream = Stream<[Double]>
+typealias AltitudeStream = Stream<Double>
+typealias SmoothVelocityStream = Stream<Double>
+typealias HeartrateStream = Stream<Int>
+typealias CadenceStream = Stream<Int>
+typealias PowerStream = Stream<Int>
+typealias TemperatureStream = Stream<Int>
+typealias MovingStream = Stream<Bool>
+typealias SmoothGradeStream = Stream<Double>
+
+// StreamSet to encapsulate all possible streams
+public struct StreamSet: Codable {
+    let time: TimeStream?
+    let distance: DistanceStream?
+    let latlng: LatLngStream?
+    let altitude: AltitudeStream?
+    let velocitySmooth: SmoothVelocityStream?
+    let heartrate: HeartrateStream?
+    let cadence: CadenceStream?
+    let watts: PowerStream?
+    let temp: TemperatureStream?
+    let moving: MovingStream?
+    let gradeSmooth: SmoothGradeStream?
 }

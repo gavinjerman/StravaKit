@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKitTests.build/master.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Tests/StravaKitTests/StravaKitTests.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKitTests.build/StravaKitTests.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKitTests.build/StravaKitTests.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKitTests.build/StravaKitTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKitTests.build/StravaKitTests.swiftdeps"
+  }
+}

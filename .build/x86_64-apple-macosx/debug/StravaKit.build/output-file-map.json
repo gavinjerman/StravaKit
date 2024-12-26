@@ -1,0 +1,185 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/master.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Auth/KeychainTokenStorage.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/KeychainTokenStorage.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/KeychainTokenStorage.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/KeychainTokenStorage~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/KeychainTokenStorage.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Auth/OAuthToken.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/OAuthToken.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/OAuthToken.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/OAuthToken~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/OAuthToken.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Auth/StravaAuthManager.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaAuthManager.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaAuthManager.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaAuthManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaAuthManager.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Auth/StravaConfig.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaConfig.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaConfig.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaConfig~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaConfig.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Auth/StravaError.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaError.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaError.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaError~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaError.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/DataLayer/StravaRepository.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRepository.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRepository.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRepository~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRepository.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/DataLayer/StravaRouter.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRouter.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRouter.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRouter~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaRouter.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/DataLayer/StravaService.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaService.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaService.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaService~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaService.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/DataLayer/StravaWebClient.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaWebClient.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaWebClient.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaWebClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaWebClient.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Achievement.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Achievement.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Achievement.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Achievement~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Achievement.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Activity.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Activity.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Activity.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Activity~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Activity.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Athlete.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Athlete.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Athlete.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Athlete~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Athlete.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/AthleteStats.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/AthleteStats.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/AthleteStats.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/AthleteStats~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/AthleteStats.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Club.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Club.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Club.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Club~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Club.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Comment.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Comment.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Comment.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Comment~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Comment.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Effort.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Effort.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Effort.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Effort~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Effort.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Event.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Event.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Event.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Event~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Event.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/GearBikeShoe.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/GearBikeShoe.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/GearBikeShoe.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/GearBikeShoe~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/GearBikeShoe.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Location.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Location.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Location.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Location~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Location.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Map.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Map.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Map.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Map~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Map.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/MapUrls.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/MapUrls.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/MapUrls.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/MapUrls~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/MapUrls.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/ModelEnums.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/ModelEnums.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/ModelEnums.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/ModelEnums~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/ModelEnums.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Photo.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Photo.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Photo.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Photo~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Photo.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Route.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Route.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Route.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Route~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Route.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Segment.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Segment.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Segment.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Segment~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Segment.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Split.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Split.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Split.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Split~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Split.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/StravaItem.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaItem.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaItem.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaItem~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaItem.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Stream.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Stream.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Stream.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Stream~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Stream.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Models/Upload.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Upload.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Upload.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Upload~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/Upload.swiftdeps"
+  },
+  "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/Sources/StravaKit/Protocols/TokenStorage.swift": {
+    "dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/TokenStorage.d",
+    "object": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/TokenStorage.swift.o",
+    "swiftmodule": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/TokenStorage~partial.swiftmodule",
+    "swift-dependencies": "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/TokenStorage.swiftdeps"
+  }
+}

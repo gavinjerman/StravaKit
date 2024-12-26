@@ -15,13 +15,15 @@ public enum StravaRouter {
     case refreshToken(clientId: String, clientSecret: String, refreshToken: String)
     case deauthorize(accessToken: String)
     case getSavedRoutes(page: Int, perPage: Int)
+    case getActivityStreams(activityId: String, types: [String])
+    case getRouteStreams(routeId: String)
 
     /// Base URL for Strava API
     private var baseURL: URL {
         switch self {
         case .authorizeApp:
             return URL(string: "strava://oauth/mobile/authorize")!
-        case .exchangeToken, .refreshToken, .getActivities, .deauthorize, .getSavedRoutes:
+        case .exchangeToken, .refreshToken, .getActivities, .deauthorize, .getSavedRoutes, .getActivityStreams, .getRouteStreams:
             return URL(string: "https://www.strava.com/api/v3")!
         }
     }
@@ -39,6 +41,10 @@ public enum StravaRouter {
             return "/oauth/deauthorize"
         case .getSavedRoutes:
                return "/athlete/routes"
+        case .getActivityStreams(let activityId, _):
+            return "/activities/\(activityId)/streams"
+        case .getRouteStreams(let routeId):
+            return "/routes/\(routeId)/streams"
         }
     }
 
@@ -49,7 +55,7 @@ public enum StravaRouter {
             return "GET"
         case .exchangeToken, .refreshToken, .deauthorize:
             return "POST"
-        case .getActivities, .getSavedRoutes:
+        case .getActivities, .getSavedRoutes, .getActivityStreams, .getRouteStreams:
             return "GET"
         }
     }
@@ -66,9 +72,19 @@ public enum StravaRouter {
                 URLQueryItem(name: "approval_prompt", value: approvalPrompt)
             ]
         case .exchangeToken(let clientId, let clientSecret, let code):
-            return nil // POST request, body handled separately
+            return [
+                URLQueryItem(name: "client_id", value: clientId),
+                URLQueryItem(name: "client_secret", value: clientSecret),
+                URLQueryItem(name: "code", value: code),
+                URLQueryItem(name: "grant_type", value: "authorization_code"),
+            ]
         case .refreshToken(let clientId, let clientSecret, let refreshToken):
-            return nil // POST request, body handled separately
+            return [
+                URLQueryItem(name: "client_id", value: clientId),
+                URLQueryItem(name: "client_secret", value: clientSecret),
+                URLQueryItem(name: "refresh_token", value: refreshToken),
+                URLQueryItem(name: "grant_type", value: "refresh_token"),
+            ]
         case .getActivities(let page, let perPage):
             return [
                 URLQueryItem(name: "page", value: String(page)),
@@ -79,7 +95,12 @@ public enum StravaRouter {
                 URLQueryItem(name: "page", value: String(page)),
                 URLQueryItem(name: "per_page", value: String(perPage))
             ]
-        case .deauthorize:
+        case .getActivityStreams(_, let types):
+                   return [
+                       URLQueryItem(name: "keys", value: types.joined(separator: ",")),
+                       URLQueryItem(name: "key_by_type", value: "true")
+                   ]
+        case .deauthorize, .getRouteStreams:
             return nil
         }
     }

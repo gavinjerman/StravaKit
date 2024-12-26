@@ -43,4 +43,28 @@ public final class StravaRepository {
             responseType: [Route].self
         )
     }
+    
+    /// Types: ["time", "distance", "latlng", "altitude", "velocity_smooth", "heartrate", "cadence", "watts", "temp", "moving", "grade_smooth"]
+    public func fetchActivityStream(activityId: String, token: OAuthToken, types: [String]) async throws -> ActivityStreamResponse {
+        let router = StravaRouter.getActivityStreams(
+            activityId: activityId,
+            types: types
+        )
+        let request = router.asURLRequest()
+        return try await StravaWebClient.shared.performRequest(
+            with: request,
+            token: token,
+            responseType: ActivityStreamResponse.self
+        )
+    }
+    
+    public func fetchRouteStream(routeId: String, token: OAuthToken) async throws -> RouteStreamResponse {
+        let router = StravaRouter.getRouteStreams(routeId: routeId)
+        let request = router.asURLRequest()
+        return try await StravaWebClient.shared.performRequest(
+            with: request,
+            token: token,
+            responseType: RouteStreamResponse.self
+        )
+    }
 }

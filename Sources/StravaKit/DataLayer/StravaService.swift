@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import StravaKit
 
 /// Business logic processing for Strava API
 public final class StravaService {
@@ -30,6 +29,14 @@ public final class StravaService {
     public func fetchSavedRoutes(page: Int = 1, perPage: Int = 30) async throws -> [Route] {
         let token = try await authManager.getValidToken()
         return try await repository.fetchSavedRoutes(token: token, page: page, perPage: perPage)
+    }
+    
+    public func fetchActivityStream(activityId: String, token: OAuthToken, types: [String]) async throws -> ActivityStreamResponse {
+        return try await repository.fetchActivityStream(activityId: activityId, token: token, types: types)
+    }
+    
+    public func fetchRouteStream(routeId: String, token: OAuthToken) async throws -> RouteStreamResponse {
+        return try await repository.fetchRouteStream(routeId: routeId, token: token)
     }
     
     // MARK: Autentication Methods

@@ -1,0 +1,4 @@
+module StravaKit {
+    header "/Users/ferrufino/Documents/dev/iOS/TrailCast/StravaKit/.build/x86_64-apple-macosx/debug/StravaKit.build/StravaKit-Swift.h"
+    requires objc
+}

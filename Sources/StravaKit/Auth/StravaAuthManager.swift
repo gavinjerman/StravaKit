@@ -86,15 +86,6 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
 
     public func refreshTokenIfNeeded(currentToken: OAuthToken) async throws -> OAuthToken {
         guard currentToken.isExpired else { return currentToken }
-
-        let url = URL(string: "https://www.strava.com/oauth/token")!
-        let bodyParams: [String: Any] = [
-            "client_id": config.clientId,
-            "client_secret": config.clientSecret,
-            "refresh_token": currentToken.refreshToken ?? "",
-            "grant_type": "refresh_token"
-        ]
-        
         let refreshRequest = StravaRouter.refreshToken(clientId: config.clientId, 
                                                        clientSecret: config.clientSecret,
                                                        refreshToken: currentToken.refreshToken ?? "").asURLRequest()
@@ -158,20 +149,7 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
     }
 
     private func exchangeCodeForToken(code: String) async throws -> OAuthToken {
-        let url = URL(string: "https://www.strava.com/oauth/token")!
-        let bodyParams: [String: Any] = [
-            "client_id": config.clientId,
-            "client_secret": config.clientSecret,
-            "code": code,
-            "grant_type": "authorization_code"
-        ]
-
-        let jsonData = try JSONSerialization.data(withJSONObject: bodyParams)
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        let request = StravaRouter.exchangeToken(clientId: config.clientId, clientSecret: config.clientSecret, code: code).asURLRequest()
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()
         return try decoder.decode(OAuthToken.self, from: data)
@@ -194,19 +172,10 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
             return
         }
 
-        // Build the request URL
-        guard let url = URL(string: "https://www.strava.com/oauth/deauthorize") else {
-            throw NSError(domain: "StravaAuthManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid deauthorize URL"])
-        }
-
-        // Create the request
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         guard let accessToken = oAuthToken.accessToken else {
             throw StravaAuthError.invalidAccessToken
         }
-        request.httpBody = try? JSONSerialization.data(withJSONObject: ["access_token": accessToken])
+        var request = StravaRouter.deauthorize(accessToken: accessToken).asURLRequest()
 
         // Perform the network request
         let (data, response) = try await URLSession.shared.data(for: request)
