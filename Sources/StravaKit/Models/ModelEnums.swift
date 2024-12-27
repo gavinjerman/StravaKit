@@ -195,57 +195,23 @@ public enum ResolutionType: String, Codable {
     case high
 }
 
-/// Type of data in activity streams.
-public enum StreamType: String, Codable {
-    /// Time data in integer seconds.
-    case time
-    /// Latitude and longitude coordinates as floats.
-    case latLng = "latlng"
-    /// Distance data in float meters.
-    case distance
-    /// Altitude data in float meters.
-    case altitude
-    /// Smoothed velocity data in float meters per second.
+/// Stream Type are defined for Activity stream types request
+public enum StreamType: String, CaseIterable {
+    case time = "time"
+    case distance = "distance"
+    case latlng = "latlng"
+    case altitude = "altitude"
     case velocitySmooth = "velocity_smooth"
-    /// Heart rate data in integer BPM.
-    case heartRate = "heartrate"
-    /// Cadence data in integer RPM.
-    case cadence
-    /// Power output data in integer watts.
-    case watts
-    /// Temperature data in integer degrees Celsius.
-    case temp
-    /// Moving state as a boolean.
-    case moving
-    /// Smoothed grade percentage data in float.
+    case heartrate = "heartrate"
+    case cadence = "cadence"
+    case watts = "watts"
+    case temp = "temp"
+    case moving = "moving"
     case gradeSmooth = "grade_smooth"
-
-    /// Description of the units associated with each stream type.
-    var unit: String {
-        switch self {
-        case .time:
-            return "integer seconds"
-        case .latLng:
-            return "floats [latitude, longitude]"
-        case .distance:
-            return "float meters"
-        case .altitude:
-            return "float meters"
-        case .velocitySmooth:
-            return "float meters per second"
-        case .heartRate:
-            return "integer BPM"
-        case .cadence:
-            return "integer RPM"
-        case .watts:
-            return "integer watts"
-        case .temp:
-            return "integer degrees Celsius"
-        case .moving:
-            return "boolean"
-        case .gradeSmooth:
-            return "float percent"
-        }
+    
+    /// Map selected cases to their raw values
+    public static func selectedTypes(_ selected: [StreamType]) -> [String] {
+        return selected.map { $0.rawValue }
     }
 }
 

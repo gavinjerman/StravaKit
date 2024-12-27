@@ -44,8 +44,8 @@ public final class StravaRepository {
         )
     }
     
-    /// Types: ["time", "distance", "latlng", "altitude", "velocity_smooth", "heartrate", "cadence", "watts", "temp", "moving", "grade_smooth"]
-    public func fetchActivityStream(activityId: String, token: OAuthToken, types: [String]) async throws -> ActivityStreamResponse {
+    public func fetchActivityStream(activityId: String, token: OAuthToken, streamTypes: [StreamType]) async throws -> ActivityStreamResponse {
+        let types = StreamType.selectedTypes(streamTypes)
         let router = StravaRouter.getActivityStreams(
             activityId: activityId,
             types: types
