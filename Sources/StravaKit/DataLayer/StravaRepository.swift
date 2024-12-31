@@ -58,6 +58,7 @@ public final class StravaRepository {
         )
     }
     
+    // MARK: - Fetch Route Stream Function
     public func fetchRouteStream(routeId: String, token: OAuthToken) async throws -> RouteStreamResponse {
         let router = StravaRouter.getRouteStreams(routeId: routeId)
         let request = router.asURLRequest()
