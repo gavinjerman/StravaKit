@@ -39,18 +39,13 @@ extension Route {
     public var formattedElevation: String {
         String(format: "%.0f m", elevationGain)
     }
-
-    public var typeIconName: String {
-        switch type {
-        case 1: return "figure.outdoor.cycle"
-        case 2: return "figure.run"
-        case 4: return "figure.hiking"
-        default: return "figure.wave"
-        }
-    }
 }
 
 extension Route: StravaItem {
+    
+    public var stravaId: String {
+        return id.description
+    }
     // Route only fills summaryPolyline
     public func decodePolyline() -> [CLLocationCoordinate2D]? {
         guard let polyline = map?.summaryPolyline else { return nil }
@@ -88,5 +83,56 @@ extension Route: StravaItem {
         }
 
         return coordinates
+    }
+    
+    public var typeIconName: String {
+        switch type {
+        case 1: // Ride
+            return "figure.outdoor.cycle"
+        case 2: // Run
+            return "figure.run"
+        case 3: // Swim
+            return "figure.swim"
+        case 4: // Hike
+            return "figure.hiking"
+        case 5: // Walk
+            return "figure.walk"
+        case 6: // Alpine Ski
+            return "figure.skiing.downhill"
+        case 7: // Backcountry Ski
+            return "figure.skiing.crosscountry"
+        case 8: // Nordic Ski
+            return "figure.skiing.crosscountry"
+        case 9: // Snowboard
+            return "figure.snowboarding"
+        case 10: // Snowshoe
+            return "figure.snowshoeing"
+        case 11: // Wheelchair
+            return "figure.roll"
+        case 12: // E-Bike Ride
+            return "bicycle"
+        case 13: // Virtual Ride
+            return "laptopcomputer.and.bicycle"
+        case 14: // Virtual Run
+            return "laptopcomputer.and.figure.run"
+        case 15: // Canoeing
+            return "figure.rower"
+        case 16: // Kayaking
+            return "figure.rower"
+        case 17: // Rowing
+            return "figure.rower"
+        case 18: // Stand Up Paddling
+            return "figure.stand.line.dotted.figure.stand"
+        case 19: // Surfing
+            return "figure.surfing"
+        case 20: // Rock Climbing
+            return "figure.climbing"
+        case 21: // Ice Skate
+            return "figure.ice.skate"
+        case 22: // Inline Skate
+            return "figure.inline.skate"
+        default:
+            return "figure.dance"
+        }
     }
 }

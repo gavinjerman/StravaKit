@@ -86,15 +86,6 @@ extension Activity {
         let elevation = totalElevationGain ?? 0
         return String(format: "%.0f m", elevation)
     }
-
-    public var typeIconName: String {
-        switch type?.lowercased() {
-        case "ride": return "figure.outdoor.cycle"
-        case "run": return "figure.run"
-        case "trail": return "figure.hiking"
-        default: return "figure.wave"
-        }
-    }
 }
 
 /**
@@ -105,7 +96,9 @@ public final class MetaActivity: Codable {
 }
 
 extension Activity: StravaItem {
-    
+    public var stravaId: String {
+        return id.description
+    }
     // Activity only fills summaryPolyline
     public func decodePolyline() -> [CLLocationCoordinate2D]? {
         guard let polyline = map?.summaryPolyline else { return nil }
@@ -143,5 +136,48 @@ extension Activity: StravaItem {
         }
 
         return coordinates
+    }
+    
+    public var typeIconName: String {
+        switch type?.lowercased() {
+        case "alpineski": return "figure.skiing.downhill"
+        case "backcountryski": return "figure.skiing.crosscountry"
+        case "canoeing": return "figure.rower"
+        case "crossfit": return "dumbbell"
+        case "ebikeride": return "bicycle"
+        case "elliptical": return "figure.walk.motion"
+        case "golf": return "flag.and.circle"
+        case "handcycle": return "hand.raised"
+        case "hike": return "figure.hiking"
+        case "iceskate": return "snowflake.circle"
+        case "inlineskate": return "figure.skating"
+        case "kayaking": return "waveform.path.ecg"
+        case "kitesurf": return "wind"
+        case "nordicski": return "figure.skiing.crosscountry"
+        case "ride": return "figure.outdoor.cycle"
+        case "rockclimbing": return "figure.climbing"
+        case "rollerski": return "figure.skiing.crosscountry"
+        case "rowing": return "figure.rower"
+        case "run": return "figure.run"
+        case "sail": return "sailboat"
+        case "skateboard": return "figure.skating"
+        case "snowboard": return "figure.snowboarding"
+        case "snowshoe": return "figure.walk.motion"
+        case "soccer": return "soccerball"
+        case "stairstepper": return "figure.stairs"
+        case "standuppaddling": return "figure.rower"
+        case "surfing": return "waveform"
+        case "swim": return "figure.swimming"
+        case "velomobile": return "bicycle"
+        case "virtualride": return "figure.outdoor.cycle"
+        case "virtualrun": return "figure.run"
+        case "walk": return "figure.walk"
+        case "weighttraining": return "dumbbell"
+        case "wheelchair": return "figure.roll"
+        case "windsurf": return "wind"
+        case "workout": return "figure.flexibility"
+        case "yoga": return "figure.stretch"
+        default: return "questionmark.circle"
+        }
     }
 }
