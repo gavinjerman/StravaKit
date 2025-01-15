@@ -41,13 +41,18 @@ public final class StravaService {
         return try await repository.fetchRouteStream(routeId: routeId, token: token)
     }
     
-    // MARK: Autentication Methods
-    public func login() async {
-        try? await authManager.authorize()
+    public func fetchRoute(routeId: String) async throws -> Route {
+        let token = try await authManager.getValidToken()
+        return try await repository.fetchRoute(routeId: routeId, token: token)
     }
     
-    public func logout() async {
-        try? await authManager.deauthorize()
+    // MARK: Autentication Methods
+    public func login() async throws {
+        try await authManager.authorize()
+    }
+    
+    public func logout() async throws {
+        try await authManager.deauthorize()
     }
     
     public func handleAuthResponse(url: URL) async throws -> OAuthToken {

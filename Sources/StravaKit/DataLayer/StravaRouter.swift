@@ -17,13 +17,14 @@ public enum StravaRouter {
     case getSavedRoutes(page: Int, perPage: Int)
     case getActivityStreams(activityId: String, types: [String])
     case getRouteStreams(routeId: String)
+    case getRoute(routeId: String)
 
     /// Base URL for Strava API
     private var baseURL: URL {
         switch self {
         case .authorizeApp:
             return URL(string: "strava://oauth/mobile/authorize")!
-        case .exchangeToken, .refreshToken, .getActivities, .deauthorize, .getSavedRoutes, .getActivityStreams, .getRouteStreams:
+        case .exchangeToken, .refreshToken, .getActivities, .deauthorize, .getSavedRoutes, .getActivityStreams, .getRouteStreams, .getRoute:
             return URL(string: "https://www.strava.com/api/v3")!
         }
     }
@@ -45,6 +46,8 @@ public enum StravaRouter {
             return "/activities/\(activityId)/streams"
         case .getRouteStreams(let routeId):
             return "/routes/\(routeId)/streams"
+        case let .getRoute(routeId):
+            return "/routes/\(routeId)"
         }
     }
 
@@ -55,7 +58,7 @@ public enum StravaRouter {
             return "GET"
         case .exchangeToken, .refreshToken, .deauthorize:
             return "POST"
-        case .getActivities, .getSavedRoutes, .getActivityStreams, .getRouteStreams:
+        case .getActivities, .getSavedRoutes, .getActivityStreams, .getRouteStreams, .getRoute:
             return "GET"
         }
     }
@@ -96,11 +99,11 @@ public enum StravaRouter {
                 URLQueryItem(name: "per_page", value: String(perPage))
             ]
         case .getActivityStreams(_, let types):
-                   return [
-                       URLQueryItem(name: "keys", value: types.joined(separator: ",")),
-                       URLQueryItem(name: "key_by_type", value: "true")
-                   ]
-        case .deauthorize, .getRouteStreams:
+            return [
+                URLQueryItem(name: "keys", value: types.joined(separator: ",")),
+                URLQueryItem(name: "key_by_type", value: "true")
+            ]
+        case .deauthorize, .getRouteStreams, .getRoute:
             return nil
         }
     }
