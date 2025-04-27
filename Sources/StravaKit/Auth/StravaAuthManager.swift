@@ -38,41 +38,48 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
 
     @MainActor
     public func authorize() async throws {
+#if os(iOS)
         if let appAuthURL = buildAppAuthURL(), UIApplication.shared.canOpenURL(appAuthURL) {
             await UIApplication.shared.open(appAuthURL)
             return
             // Strava app redirects back with the authorization code; If using UIKit handle it in SceneDelegate/AppDelegate
             // In SwitUI rely on "onOpenURL"
         } else {
-            let authURL = buildWebAuthURL()
-            let oAuthToken = try await withCheckedThrowingContinuation { continuation in
-                authSession = ASWebAuthenticationSession(
-                    url: authURL,
-                    callbackURLScheme: config.redirectUri.components(separatedBy: "://").first,
-                    completionHandler: { [weak self] callbackURL, error in
-                        guard let self = self else { return }
-                        if let callbackURL = callbackURL {
-                            Task {
-                                do {
-                                    let token = try await self.handleAuthResponse(url: callbackURL)
-                                    continuation.resume(returning: token)
-                                } catch {
-                                    continuation.resume(throwing: error)
-                                }
-                            }
-                        } else if let error = error {
-                            continuation.resume(throwing: error)
-                        }
-                    }
-                )
-                authSession?.presentationContextProvider = self
-                authSession?.start()
-            }
-            self.tokenStorage.save(token: oAuthToken)
-            return
+            try await authorizeBuildWebAuthURL()
         }
+#else
+        try await authorizeBuildWebAuthURL()
+#endif
     }
-    
+
+    private func authorizeBuildWebAuthURL() async throws {
+        let authURL = buildWebAuthURL()
+        let oAuthToken = try await withCheckedThrowingContinuation { continuation in
+            authSession = ASWebAuthenticationSession(
+                url: authURL,
+                callbackURLScheme: config.redirectUri.components(separatedBy: "://").first,
+                completionHandler: { [weak self] callbackURL, error in
+                    guard let self = self else { return }
+                    if let callbackURL = callbackURL {
+                        Task {
+                            do {
+                                let token = try await self.handleAuthResponse(url: callbackURL)
+                                continuation.resume(returning: token)
+                            } catch {
+                                continuation.resume(throwing: error)
+                            }
+                        }
+                    } else if let error = error {
+                        continuation.resume(throwing: error)
+                    }
+                }
+            )
+            authSession?.presentationContextProvider = self
+            authSession?.start()
+        }
+        self.tokenStorage.save(token: oAuthToken)
+    }
+
     /// Returns a valid token, refreshing it if necessary
     public func getValidToken() async throws -> OAuthToken {
         guard let currentToken = tokenStorage.getToken() else {
@@ -156,11 +163,19 @@ public final class StravaAuthManager: NSObject, ObservableObject, ASWebAuthentic
     }
 
     public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+#if os(iOS)
         guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = scene.windows.first else {
             return ASPresentationAnchor()
         }
         return window
+#else
+        // return the main window
+        if let window = NSApplication.shared.windows.first {
+            return window
+        }
+        return ASPresentationAnchor()
+#endif
     }
     
     public func deauthorize() async throws {
